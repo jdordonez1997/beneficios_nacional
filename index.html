@@ -675,9 +675,14 @@
       const provincia = getProvincia(props);
       const color = colorForProvince(provincia);
 
-      const marker = L.marker(latlng, {
-        icon: createPointIcon(color)
-      });
+  const marker = L.circleMarker(latlng, {
+  radius: 4,
+  fillColor: color,
+  color: "#ffffff",
+  weight: 1,
+  opacity: 1,
+  fillOpacity: 0.9
+});
 
       marker.feature = feature;
       marker._featureId = index;
@@ -1081,4 +1086,5 @@
 </body>
 
 </html>
+
 
