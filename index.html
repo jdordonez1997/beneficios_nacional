@@ -735,7 +735,29 @@
       marker.feature = feature;
       marker._featureId = index;
 
-      marker.on('click', () => openDetailPanel(feature));
+      marker.on('click', () => {
+
+  // devolver estilo al punto anterior
+  if (selectedMarker) {
+    selectedMarker.setStyle({
+      radius: 4,
+      weight: 1,
+      color: "#ffffff"
+    });
+  }
+
+  // guardar nuevo punto seleccionado
+  selectedMarker = marker;
+
+  // resaltar punto
+  marker.setStyle({
+    radius: 7,
+    weight: 3,
+    color: "#000000"
+  });
+
+  openDetailPanel(feature);
+});
       return marker;
     }
 
@@ -1136,6 +1158,7 @@ document.addEventListener('keydown', function(e){
 </body>
 
 </html>
+
 
 
 
