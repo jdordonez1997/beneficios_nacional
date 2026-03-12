@@ -947,9 +947,18 @@
   detailPanel.classList.add('open');
 }
 
-  function closeDetailPanel(){
+function closeDetailPanel(){
   document.getElementById('detailPanel').classList.remove('open');
   document.getElementById('detailGrid').innerHTML = `<div class="detail-empty">Haz clic en un punto para ver el detalle.</div>`;
+
+  if (selectedMarker) {
+    selectedMarker.setStyle({
+      radius: 4,
+      weight: 1,
+      color: "#ffffff"
+    });
+    selectedMarker = null;
+  }
 }
 
     function exportSelectedToExcel(){
@@ -1158,6 +1167,7 @@ document.addEventListener('keydown', function(e){
 </body>
 
 </html>
+
 
 
 
