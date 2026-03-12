@@ -491,12 +491,22 @@
     </aside>
 
     <main class="map-wrap">
-      <div id="map"></div>
-      <div class="floating-note">
-        Consejo de uso: al abrir, los puntos se agrupan para acelerar la carga. Al acercarte,
-        se verán individualmente con el color de su provincia.
-      </div>
-    </main>
+  <div id="map"></div>
+  <div class="floating-note">
+    Consejo de uso: al abrir, los puntos se agrupan para acelerar la carga. Al acercarte,
+    se verán individualmente con el color de su provincia.
+  </div>
+
+  <aside class="detail-panel" id="detailPanel">
+    <div class="detail-panel-head">
+      <h2>DETALLE DEL BENEFICIARIO</h2>
+      <button class="detail-panel-close" id="closeDetailPanelBtn">Cerrar</button>
+    </div>
+    <div class="detail-panel-body" id="detailGrid">
+      <div class="detail-empty">Haz clic en un punto para ver el detalle.</div>
+    </div>
+  </aside>
+</main>
   </div>
 
   <div class="modal" id="detailModal">
@@ -1086,6 +1096,7 @@
 </body>
 
 </html>
+
 
 
 
