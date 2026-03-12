@@ -880,37 +880,43 @@
       renderFilteredFeatures(zoomToResults);
     }
 
-    function openDetailModal(feature){
-      const props = feature.properties || {};
-      const detailGrid = document.getElementById('detailGrid');
+   function openDetailPanel(feature){
+  const props = feature.properties || {};
+  const detailGrid = document.getElementById('detailGrid');
+  const detailPanel = document.getElementById('detailPanel');
 
-      const rows = [
-        ['APELLIDOS', safeValue(props.apellidos)],
-        ['NOMBRES', safeValue(props.nombres)],
-        ['GÉNERO', safeValue(props.sexo)],
-        ['CÉDULA', safeValue(props.cedula)],
-        ['DISCAPACIDAD', safeValue(props.discapacidad)],
-        ['PUNTAJE', safeValue(props.puntaje)],
-        ['CONTACTO', safeValue(props.numerocelular)],
-        ['PROVINCIA', safeValue(props.provincia)],
-        ['CANTÓN', safeValue(props.canton)],
-        ['PARROQUIA', safeValue(props.parroquia)],
-        ['PROPIEDAD DE LA VIVIENDA', safeValue(props.propiedad_vivienda)]
-      ];
+  const rows = [
+    ['APELLIDOS', safeValue(props.apellidos)],
+    ['NOMBRES', safeValue(props.nombres)],
+    ['GÉNERO', safeValue(props.sexo)],
+    ['CÉDULA', safeValue(props.cedula)],
+    ['DISCAPACIDAD', safeValue(props.discapacidad)],
+    ['PUNTAJE', safeValue(props.puntaje)],
+    ['CONTACTO', safeValue(props.numerocelular)],
+    ['PROVINCIA', safeValue(props.provincia)],
+    ['CANTÓN', safeValue(props.canton)],
+    ['PARROQUIA', safeValue(props.parroquia)],
+    ['PROPIEDAD DE LA VIVIENDA', safeValue(props.propiedad_vivienda)]
+  ];
 
-      detailGrid.innerHTML = rows.map(([label, value]) => `
+  detailGrid.innerHTML = `
+    <div class="detail-grid">
+      ${rows.map(([label, value]) => `
         <div class="detail-item">
           <div class="label">${label}</div>
           <div class="value">${value}</div>
         </div>
-      `).join('');
+      `).join('')}
+    </div>
+  `;
 
-      document.getElementById('detailModal').classList.add('open');
-    }
+  detailPanel.classList.add('open');
+}
 
-    function closeDetailModal(){
-      document.getElementById('detailModal').classList.remove('open');
-    }
+  function closeDetailPanel(){
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('detailGrid').innerHTML = `<div class="detail-empty">Haz clic en un punto para ver el detalle.</div>`;
+}
 
     function exportSelectedToExcel(){
       if (selectedFeatureIds.size === 0){
@@ -1122,6 +1128,7 @@
 </body>
 
 </html>
+
 
 
 
